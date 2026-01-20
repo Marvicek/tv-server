@@ -2,4 +2,4 @@ Tv-Server
 
 Po dlouhých letech uživaní tvheadendu v domacnosti jsem se rozhodl vytvořit toto peklo ... teprve začínám co to umí:
 
-- generová picon na request
+- generování picon na request
