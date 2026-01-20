@@ -4,7 +4,6 @@ import json
 import time
 import uuid
 from datetime import datetime
-from pathlib import Path
 from core.utils import project_root, ensure_dir
 
 DB_PATH = project_root() / "cache" / "logs" / "events.sqlite3"

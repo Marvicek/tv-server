@@ -17,7 +17,6 @@ app.mount("/", playlist_app)
 app.mount("/picon", picons_app)
 app.mount("/logs", logs_app)
 
-# Providers (stubs zatím)
 app.mount("/ivysilani", ivysilani_app)
 app.mount("/sledovanitv", sledovanitv_app)
 app.mount("/oneplay", oneplay_app)

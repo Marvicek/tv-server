@@ -8,29 +8,38 @@ picons_app = Bottle()
 def _cfg():
     return load_json(project_root() / "config.json", default={}) or {}
 
-@picons_app.get("/<channel>.png")
-def picon(channel):
+@picons_app.get("/<service>/<channel>.png")
+def picon(service, channel):
     cfg = _cfg()
-    ch = (cfg.get("channels") or {}).get(channel) or {}
+    services = cfg.get("services") or {}
+    channels = cfg.get("channels") or {}
 
-    src = request.query.get("src") or ch.get("source") or ""
-    q = request.query.get("q") or ch.get("quality") or ""
+    if service not in services or channel not in channels:
+        response.status = 404
+        return "Not found"
+
+    svc = services.get(service) or {}
+    ch = channels.get(channel) or {}
+
+    bg = svc.get("bg", "#444444")
+    mark = ch.get("mark_png", "ct_mark_cropped.png")
+
+    show_iptv = bool(svc.get("iptv_icon", False))
+    show_ivys = bool(svc.get("ivysilani_text", False))
+    ivys_text = svc.get("ivysilani_label", "iVysílání")
+    iptv_color = svc.get("iptv_color", bg)
+
     size = request.query.get("size") or ""
 
-    bg = ch.get("bg", "#444444")
-    mark = ch.get("mark_png", "ct_mark_cropped.png")
-    badge = None
-    badges = (cfg.get("badges") or {})
-    if src and isinstance(badges, dict):
-        badge = badges.get(src) or badges.get(src.lower())
-
     master = render_master_png(
+        service=service,
         channel_id=channel,
         bg_hex=bg,
         mark_png_name=mark,
-        quality=q,
-        badge_svg_name=badge,
-        watermark=cfg.get("watermark", "MarvicekLogo"),
+        show_iptv_icon=show_iptv,
+        iptv_color_hex=iptv_color,
+        show_ivysilani_text=show_ivys,
+        ivysilani_text=ivys_text,
     )
 
     out = master

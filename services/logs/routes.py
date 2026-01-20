@@ -10,7 +10,7 @@ def help():
     return {
         "endpoints": {
             "POST /logs/ingest": "send JSON event",
-            "GET /logs/recent?n=50": "recent events",
+            "GET /logs/recent?n=50": "recent events"
         }
     }
 

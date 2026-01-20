@@ -1,5 +1,22 @@
-Tv-Server
+# IPTV Web Server (simple)
 
-Po dlouhých letech uživaní tvheadendu v domacnosti jsem se rozhodl vytvořit toto peklo ... teprve začínám co to umí:
+## Endpoints
+- Picon: `/picon/<service>/<channel>.png`
+- Playlist: `/playlist/<service>.m3u`
+- Play redirect: `/play/<service>/<channel>`
+- Logs: `/logs`
 
-- generování picon na request
+## Install (Ubuntu APT)
+```bash
+sudo apt install python3-bottle python3-requests python3-pil
+```
+
+## Run
+```bash
+python3 server.py
+```
+
+## Try
+- http://127.0.0.1:8080/picon/ivysilani/ct1.png
+- http://127.0.0.1:8080/picon/ivysilani/ct1.png?size=256
+- http://127.0.0.1:8080/playlist/ivysilani.m3u
