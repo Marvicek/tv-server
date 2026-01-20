@@ -108,5 +108,24 @@
         "ctsportplus": ""
       }
     }
-  }
+  },
+  "encoder_whitelist": [
+    "CH_25",
+    "CH_26",
+    "CH_27",
+    "CH_28",
+    "CH_29",
+    "CH_30",
+    "CH_31",
+    "CH_32",
+    "CH_MOB_01",
+    "CH_MP_01",
+    "CH_MP_02",
+    "CH_MP_03",
+    "CH_MP_04",
+    "CH_MP_05",
+    "CH_MP_06",
+    "CH_MP_07",
+    "CH_MP_08"
+  ]
 }
