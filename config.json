@@ -42,6 +42,21 @@
       "tvg_id": "ctsport",
       "mark_png": "ctsport.png",
       "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+    },
+    "ivysilani": {
+      "name": "iVysílání",
+      "group": "Služby",
+      "tvg_id": "ivysilani",
+      "mark_png": "ivysilani_mark.png",
+      "url": ""
+    },
+    "ctsportplus": {
+      "name": "ČT sport Plus",
+      "group": "Česká televize",
+      "tvg_id": "ctsportplus",
+      "mark_png": "ctsportplus_mark.png",
+      "bg": "#43BE13",
+      "url": ""
     }
   },
   "services": {
@@ -55,7 +70,9 @@
         "ct24": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
         "ctart": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
         "ctd": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
-        "ctsport": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+        "ctsport": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+        "ivysilani": "",
+        "ctsportplus": ""
       }
     },
     "ivysilani": {
@@ -70,7 +87,9 @@
         "ct24": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
         "ctart": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
         "ctd": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
-        "ctsport": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+        "ctsport": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+        "ivysilani": "",
+        "ctsportplus": ""
       }
     },
     "oneplay": {
@@ -84,7 +103,9 @@
         "ct24": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
         "ctart": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
         "ctd": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
-        "ctsport": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+        "ctsport": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+        "ivysilani": "",
+        "ctsportplus": ""
       }
     }
   }

@@ -21,7 +21,7 @@ def picon(service, channel):
     svc = services.get(service) or {}
     ch = channels.get(channel) or {}
 
-    bg = svc.get("bg", "#444444")
+    bg = ch.get("bg", svc.get("bg", "#444444"))
     mark = ch.get("mark_png", "ct_mark_cropped.png")
 
     show_iptv = bool(svc.get("iptv_icon", False))
@@ -36,7 +36,7 @@ def picon(service, channel):
         channel_id=channel,
         bg_hex=bg,
         mark_png_name=mark,
-        show_iptv_icon=show_iptv,
+                show_iptv_icon=show_iptv,
         iptv_color_hex=iptv_color,
         show_ivysilani_text=show_ivys,
         ivysilani_text=ivys_text,

@@ -27,3 +27,7 @@ python3 server.py
 - http://127.0.0.1:8080/picon/ivysilani/ctart.png
 - http://127.0.0.1:8080/picon/ivysilani/ctd.png
 - http://127.0.0.1:8080/picon/ivysilani/ctsport.png
+
+- http://127.0.0.1:8080/picon/ivysilani/ivysilani.png
+
+- http://127.0.0.1:8080/picon/ivysilani/ctsportplus.png
