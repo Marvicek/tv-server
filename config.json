@@ -61,7 +61,7 @@
     "ivysilani": {
       "bg": "#E31E24",
       "iptv_icon": true,
-      "iptv_color": "#E31E24",
+      "iptv_color": "#FFFFFF",
       "ivysilani_text": true,
       "ivysilani_label": "iVysílání",
       "streams": {
@@ -76,7 +76,7 @@
     "oneplay": {
       "bg": "#111111",
       "iptv_icon": true,
-      "iptv_color": "#E31E24",
+      "iptv_color": "#FFFFFF",
       "ivysilani_text": false,
       "streams": {
         "ct1": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
