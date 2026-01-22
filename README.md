@@ -1,19 +1,43 @@
+# IPTV Web Server (simple)
 
-# ČT IPTV Server
+## Endpoints
+- Picon: `/picon/<service>/<channel>.png`
+- Playlist: `/playlist/<service>.m3u`
+- Play redirect: `/play/<service>/<channel>`
+- Logs: `/logs`
 
-Self-healing IPTV backend for Česká televize.
-
-## Features
-- Auto-discovery of channels from HBBTV
-- DASH-first playback
-- Playlist output for VLC / Kodi / Tvheadend
-- Picon generator support
+## Install (Ubuntu APT)
+```bash
+sudo apt install python3-bottle python3-requests python3-pil
+```
 
 ## Run
 ```bash
-pip install bottle requests pillow
 python3 server.py
 ```
 
-Playlist:
-http://127.0.0.1:8080/ct/playlist/ct_playlist.m3u
+## Try
+- http://127.0.0.1:8080/picon/ivysilani/ct1.png
+- http://127.0.0.1:8080/picon/ivysilani/ct1.png?size=256
+- http://127.0.0.1:8080/playlist/ivysilani.m3u
+
+### Další kanály
+- http://127.0.0.1:8080/picon/ivysilani/ct2.png
+- http://127.0.0.1:8080/picon/ivysilani/ct24.png
+- http://127.0.0.1:8080/picon/ivysilani/ctart.png
+- http://127.0.0.1:8080/picon/ivysilani/ctd.png
+- http://127.0.0.1:8080/picon/ivysilani/ctsport.png
+
+- http://127.0.0.1:8080/picon/ivysilani/ivysilani.png
+
+- http://127.0.0.1:8080/picon/ivysilani/ctsportplus.png
+
+
+## PICON DEBUG
+- Picon endpoints send `Cache-Control: no-store` (easier testing).
+- If your IPTV app still shows old icons, clear its cache or add `?v=1` to the picon URL.
+
+
+## UI-only build (picons preserved)
+
+Streamy jsou vypnuté, ale picon konfigurace pro ČT kanály zůstává zachována a funkční.

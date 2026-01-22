@@ -1,8 +1,58 @@
-
-from bottle import Bottle, static_file
+# -*- coding: utf-8 -*-
+from bottle import Bottle, request, response, static_file
+from core.utils import project_root, load_json
+from services.picons.render import render_master_png, render_png_size
 
 picons_app = Bottle()
 
-@picons_app.get("/<name>.png")
-def get_picon(name):
-    return static_file(name + ".png", root="static/picons")
+
+
+def _set_no_cache_headers():
+    # During debugging, avoid stale cached picons in players/browsers
+    response.set_header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+    response.set_header('Pragma', 'no-cache')
+    response.set_header('Expires', '0')
+
+def _cfg():
+    return load_json(project_root() / "config.json", default={}) or {}
+
+@picons_app.get("/<service>/<channel>.png")
+def picon(service, channel):
+    cfg = _cfg()
+    services = cfg.get("services") or {}
+    channels = cfg.get("channels") or {}
+
+    if service not in services or channel not in channels:
+        response.status = 404
+        return "Not found"
+
+    svc = services.get(service) or {}
+    ch = channels.get(channel) or {}
+
+    bg = ch.get("bg", svc.get("bg", "#444444"))
+    mark = ch.get("mark_png", "ct_mark_cropped.png")
+
+    show_iptv = bool(svc.get("iptv_icon", False))
+    show_ivys = bool(svc.get("ivysilani_text", False))
+    ivys_text = svc.get("ivysilani_label", "iVysílání")
+    iptv_color = svc.get("iptv_color") or ("#E31E24" if svc.get("iptv_icon") else bg)
+
+    size = request.query.get("size") or ""
+
+    master = render_master_png(
+        service=service,
+        channel_id=channel,
+        bg_hex=bg,
+        mark_png_name=mark,
+                show_iptv_icon=show_iptv,
+        iptv_color_hex=iptv_color,
+        show_ivysilani_text=show_ivys,
+        ivysilani_text=ivys_text,
+    )
+
+    out = master
+    if size:
+        out = render_png_size(master, int(size))
+
+    response.set_header("Cache-Control", "public, max-age=86400")
+    return static_file(out.name, root=str(out.parent), mimetype="image/png")
