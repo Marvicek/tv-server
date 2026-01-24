@@ -1,43 +1,19 @@
-# IPTV Web Server (simple)
+# tv-server (ivysilani-only)
 
-## Endpoints
-- Picon: `/picon/<service>/<channel>.png`
-- Playlist: `/playlist/<service>.m3u`
-- Play redirect: `/play/<service>/<channel>`
-- Logs: `/logs`
+Minimalistický IPTV server zaměřený výhradně na **iVysílání (Česká televize)**.
 
-## Install (Ubuntu APT)
-```bash
-sudo apt install python3-bottle python3-requests python3-pil
-```
+## Playlisty
+- TS: http://IP:PORT/ivysilani/ivysilani_ts.m3u
+- DASH: http://IP:PORT/ivysilani/ivysilani_dash.m3u
 
-## Run
-```bash
+## Picony
+http://IP:PORT/picon/ivysilani/*.png
+
+## Spuštění
 python3 server.py
-```
-
-## Try
-- http://127.0.0.1:8080/picon/ivysilani/ct1.png
-- http://127.0.0.1:8080/picon/ivysilani/ct1.png?size=256
-- http://127.0.0.1:8080/playlist/ivysilani.m3u
-
-### Další kanály
-- http://127.0.0.1:8080/picon/ivysilani/ct2.png
-- http://127.0.0.1:8080/picon/ivysilani/ct24.png
-- http://127.0.0.1:8080/picon/ivysilani/ctart.png
-- http://127.0.0.1:8080/picon/ivysilani/ctd.png
-- http://127.0.0.1:8080/picon/ivysilani/ctsport.png
-
-- http://127.0.0.1:8080/picon/ivysilani/ivysilani.png
-
-- http://127.0.0.1:8080/picon/ivysilani/ctsportplus.png
 
 
-## PICON DEBUG
-- Picon endpoints send `Cache-Control: no-store` (easier testing).
-- If your IPTV app still shows old icons, clear its cache or add `?v=1` to the picon URL.
-
-
-## UI-only build (picons preserved)
-
-Streamy jsou vypnuté, ale picon konfigurace pro ČT kanály zůstává zachována a funkční.
+## iVysilani+ (CH_25+)
+- IDs CH_25+ jsou natvrdo.
+- Název se best-effort doplní z HbbTV online.json (encoder -> programTitle).
+- Lineární CH_1..CH_24 běží v režimu 1 aktivní stream (autoswitch).
